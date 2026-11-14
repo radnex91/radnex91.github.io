@@ -4,14 +4,16 @@
 
    Valeurs choisies sur mesure (includes/assets/background.png, 1670x941) :
    l'image est presque noire en mediane (luminance 0,003) et n'a de blancs purs
-   que sur le robot et le logo. A 0,62/0,78 le texte blanc gardait 4,98:1 sur le
-   pixel le plus clair de la bande centrale ; a 0,45/0,60 il garde 4,4:1, ce qui
-   suffit pour les deux legendes de l'ecran d'accueil (18 px). Descendre plus bas
-   demande un fond propre derriere ces legendes. */
+   que sur le robot et le logo. Le texte des panneaux ne depend pas du voile :
+   leur fond translucide garde 10:1 avec du blanc au pire cas. Le seul texte
+   pose a meme la photo est la ligne d'etat de l'ecran d'accueil : sa zone est
+   noire a 99 % (contraste blanc 4,3:1) avec un eclat clair qui tombe a 1,95:1.
+   Si cette ligne devient genante, poser un fond derriere elle plutot que de
+   remonter le voile. */
 
 body.bg-gray-900 {
     background-image:
-        linear-gradient(rgba(17, 24, 39, 0.45), rgba(17, 24, 39, 0.60)),
+        linear-gradient(rgba(17, 24, 39, 0.30), rgba(17, 24, 39, 0.45)),
         url("../assets/background.png");
     background-size: cover;
     background-position: center center;
@@ -26,8 +28,8 @@ body.bg-gray-900 {
    recouvraient, pour que la photo passe dans les marges et entre les cartes.
    Les cartes de payloads restent opaques : le texte ne bouge pas.
    Fond effectif d'un panneau sur la zone la plus claire de la photo voilee :
-   0,82 * #1f2937 + 0,18 * rgb(148,152,160) = rgb(52,61,74), soit 12:1 avec du
-   texte blanc et 6,7:1 avec du blanc a 70 %. */
+   0,82 * #1f2937 + 0,18 * rgb(184,186,190) = rgb(58,67,79), soit 10,0:1 avec du
+   texte blanc et 5,9:1 avec du blanc a 70 %. */
 
 #exploit-main-screen {
     background-color: transparent;
