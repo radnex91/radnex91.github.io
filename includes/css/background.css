@@ -1,10 +1,17 @@
 /* Fond personnalise (image fournie par le proprietaire du site).
    Le degrade au-dessus de l'image est un voile sombre : baisser les deux
-   valeurs d'opacite pour voir l'image davantage, les monter pour plus de contraste. */
+   valeurs d'opacite pour voir l'image davantage, les monter pour plus de contraste.
+
+   Valeurs choisies sur mesure (includes/assets/background.png, 1670x941) :
+   l'image est presque noire en mediane (luminance 0,003) et n'a de blancs purs
+   que sur le robot et le logo. A 0,62/0,78 le texte blanc gardait 4,98:1 sur le
+   pixel le plus clair de la bande centrale ; a 0,45/0,60 il garde 4,4:1, ce qui
+   suffit pour les deux legendes de l'ecran d'accueil (18 px). Descendre plus bas
+   demande un fond propre derriere ces legendes. */
 
 body.bg-gray-900 {
     background-image:
-        linear-gradient(rgba(17, 24, 39, 0.62), rgba(17, 24, 39, 0.78)),
+        linear-gradient(rgba(17, 24, 39, 0.45), rgba(17, 24, 39, 0.60)),
         url("../assets/background.png");
     background-size: cover;
     background-position: center center;
