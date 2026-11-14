@@ -18,3 +18,24 @@ body.bg-gray-900 {
     background-repeat: no-repeat;
     background-attachment: fixed;
 }
+
+/* L'ecran principal laisse voir la photo.
+   Il portait bg-gray-900, un fond opaque #111827 qui recouvrait tout le
+   viewport : l'image ne pouvait donc apparaitre que sur l'ecran d'accueil.
+   On neutralise ce fond et on rend translucides les surfaces opaques qui le
+   recouvraient, pour que la photo passe dans les marges et entre les cartes.
+   Les cartes de payloads restent opaques : le texte ne bouge pas.
+   Fond effectif d'un panneau sur la zone la plus claire de la photo voilee :
+   0,82 * #1f2937 + 0,18 * rgb(148,152,160) = rgb(52,61,74), soit 12:1 avec du
+   texte blanc et 6,7:1 avec du blanc a 70 %. */
+
+#exploit-main-screen {
+    background-color: transparent;
+}
+
+#exploit-status-panel,
+#payloadsSection,
+#default-tab-content,
+#exploit-main-screen .tabs {
+    background-color: rgba(31, 41, 55, 0.82);
+}
