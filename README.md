@@ -1,6 +1,10 @@
 > **Miroir non officiel** — copie du dépôt [`ArabPixel/WebKitty`](https://github.com/ArabPixel/WebKitty)
-> publiée telle quelle sur https://radnex91.github.io (licence AGPL-3.0, voir `LICENSE`).
-> Seul le fichier `CNAME` de l'éditeur a été retiré ; le code n'a pas été modifié.
+> publiée sur https://radnex91.github.io (licence AGPL-3.0, voir `LICENSE`).
+> Fichier `CNAME` de l'éditeur retiré, fond d'écran ajouté (`includes/css/background.css`,
+> `includes/assets/background.png`) et couche d'ergonomie ajoutée
+> (`includes/css/ergonomics.css`, `includes/js/ergonomics.js`) : anneau de focus, cibles
+> tactiles de 44 px, contraste des onglets, recherche filtrante dans la liste des payloads.
+> Aucune logique d'exploit (`jailbreak.js`, chaînes, payloads) n'a été touchée.
 
 <div align="center">
 

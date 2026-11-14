@@ -1,0 +1,178 @@
+/* Ergonomics layer, loaded after the theme stylesheets so it wins.
+   Scope: focus visibility, target sizes, label contrast, list affordance. */
+
+:root {
+    --ergo-focus: #60a5fa;
+}
+
+/* 1. Focus indicator. The site shipped no :focus rule at all, so keyboard and
+   gamepad navigation were blind: you could not tell which card would launch. */
+a:focus,
+button:focus,
+input:focus,
+select:focus,
+textarea:focus,
+[role="tab"]:focus,
+[tabindex]:focus {
+    outline: 3px solid var(--ergo-focus) !important;
+    outline-offset: 2px !important;
+}
+
+.payload-card:focus-within {
+    outline: 3px solid var(--ergo-focus);
+    outline-offset: 2px;
+    border-radius: 0.85rem;
+}
+
+/* 2. Target size >= 44px for typed fields and pickers (they measured 27px).
+    Radio and checkbox keep their native box, so they are deliberately excluded. */
+input[type="text"],
+input[type="search"],
+input[type="file"],
+select {
+    min-height: 44px;
+    font-size: 16px;
+    line-height: 1.4;
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+}
+
+#ps4FwSelect {
+    min-width: 96px;
+}
+
+#customPayloadInput {
+    width: 100% !important;
+}
+
+/* 3. Tab labels: "Tools" measured 3.99:1, below the 4.5:1 threshold. Selection
+   is also marked by a border and a tint, not by colour alone. */
+#default-tab [role="tab"] {
+    color: rgba(255, 255, 255, 0.92);
+    min-height: 44px;
+    border-bottom: 3px solid transparent;
+}
+
+#default-tab [role="tab"]:hover {
+    color: #fff;
+}
+
+#default-tab [role="tab"][aria-selected="true"] {
+    color: #fff;
+    border-bottom-color: var(--ergo-focus);
+    background-color: rgba(96, 165, 250, 0.14);
+}
+
+/* 4. Payload cards read as actionable: hover and focus mark the exact card. */
+.payload-card,
+.payload-card > .payloadContainer {
+    border-radius: 0.85rem;
+}
+
+.payload-card:hover > .payloadContainer > div,
+.payload-card:focus-within > .payloadContainer > div {
+    border-color: var(--ergo-focus);
+    background-color: #1f2b3d;
+}
+
+/* 5. Scroll affordance for the payload list: a thin visible scrollbar instead
+   of an invisible overlay, so it is obvious the list continues. */
+#payloadsGrid {
+    scrollbar-width: thin;
+    scrollbar-color: #6b7280 #1f2937;
+}
+
+#payloadsGrid::-webkit-scrollbar {
+    width: 10px;
+}
+
+#payloadsGrid::-webkit-scrollbar-track {
+    background: #1f2937;
+    border-radius: 5px;
+}
+
+#payloadsGrid::-webkit-scrollbar-thumb {
+    background: #6b7280;
+    border-radius: 5px;
+}
+
+#payloadsGrid::-webkit-scrollbar-thumb:hover {
+    background: #9ca3af;
+}
+
+/* 6. Payload search bar, injected by ergonomics.js above the tab strip. */
+.payload-search {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 0.75rem;
+    background: rgba(17, 24, 39, 0.85);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.payload-search input[type="search"] {
+    flex: 1 1 auto;
+    min-width: 0;
+    background: #1f2937;
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 0.5rem;
+}
+
+.payload-search input[type="search"]::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.payload-search__count {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.9);
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+}
+
+.payload-search__clear {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border: 0;
+    border-radius: 0.5rem;
+    background: #374151;
+    color: #fff;
+    cursor: pointer;
+}
+
+.payload-search.has-query .payload-search__clear {
+    display: flex;
+}
+
+.payload-search__empty {
+    display: none;
+    padding: 0.75rem;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.payload-search__empty.is-visible {
+    display: block;
+}
+
+/* Match count per tab, so a filter never looks like "no results" when the
+   matches sit in another tab. */
+.payload-search__badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 20px;
+    height: 20px;
+    margin-left: 0.35rem;
+    padding: 0 0.35rem;
+    border-radius: 999px;
+    background: var(--ergo-focus);
+    color: #111827;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1;
+    vertical-align: middle;
+}
