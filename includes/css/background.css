@@ -1,0 +1,13 @@
+/* Fond personnalise (image fournie par le proprietaire du site).
+   Le degrade au-dessus de l'image est un voile sombre : baisser les deux
+   valeurs d'opacite pour voir l'image davantage, les monter pour plus de contraste. */
+
+body.bg-gray-900 {
+    background-image:
+        linear-gradient(rgba(17, 24, 39, 0.62), rgba(17, 24, 39, 0.78)),
+        url("../assets/background.png");
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
